@@ -44,14 +44,14 @@ let totalLoan,
 		"rgba(128, 0, 128, 1)",
 		"rgba(255, 165, 0, 1)",
 	];
-  borderColor = [
-    "rgba(255, 0, 0, 1)",
-    "rgba(0, 0, 205, 1)",
-    "rgba(252, 247, 94, 1)",
-    "rgba(0, 128, 0, 1)",
-    "rgba(128, 0, 128, 1)",
-    "rgba(255, 165, 0, 1)",
-  ];
+borderColor = [
+	"rgba(255, 0, 0, 1)",
+	"rgba(0, 0, 205, 1)",
+	"rgba(252, 247, 94, 1)",
+	"rgba(0, 128, 0, 1)",
+	"rgba(128, 0, 128, 1)",
+	"rgba(255, 165, 0, 1)",
+];
 
 // take away characters and returns numbers
 function getNumber(str) {
@@ -87,7 +87,7 @@ myChart.options.animations = false;
 // add event listners to inputs
 let i;
 let inputTexts = document.getElementsByClassName(
-	"form-group__inputTexts"
+	"form-group__textInput"
 );
 for (let i = 0; i < inputTexts.length; i++) {
 	inputTexts[i].addEventListener(
@@ -155,30 +155,30 @@ function calculateData() {
 		parseFloat(monthlyPropertyTaxes) +
 		parseFloat(monthlyHomeInsurance) +
 		parseFloat(monthlyHOA);
-  
-  document.getElementsByClassName('info__numbers--principal')[0].innerHTML = parseFloat(monthlyPrincipalInterest).toFixed(2);
-  document.getElementsByClassName('info__numbers--property_taxes')[0].innerHTML = parseFloat(monthlyPropertyTaxes).toFixed(2);
-  document.getElementsByClassName('info__numbers--home_insurance')[0].innerHTML = parseFloat(monthlyHomeInsurance).toFixed(2);
-  document.getElementsByClassName('info__numbers--hoa')[0].innerHTML = parseFloat(monthlyHOA).toFixed(2);
-  document.getElementsByClassName('info__numbers--total')[0].innerHTML = monthlyTotal.toFixed(2);
-  updateChart(myChart, labels, backgroundColor);
+
+	document.getElementsByClassName('info__numbers--principal')[0].innerHTML = parseFloat(monthlyPrincipalInterest).toFixed(2);
+	document.getElementsByClassName('info__numbers--property_taxes')[0].innerHTML = parseFloat(monthlyPropertyTaxes).toFixed(2);
+	document.getElementsByClassName('info__numbers--home_insurance')[0].innerHTML = parseFloat(monthlyHomeInsurance).toFixed(2);
+	document.getElementsByClassName('info__numbers--hoa')[0].innerHTML = parseFloat(monthlyHOA).toFixed(2);
+	document.getElementsByClassName('info__numbers--total')[0].innerHTML = monthlyTotal.toFixed(2);
+	updateChart(myChart, labels, backgroundColor);
 }
 
 function updateChart(chart, label, color) {
-  chart.data.datasets.pop();
-  chart.data.datasets.push({
-    label: label, 
-    backgroundColor: color,
-    data : [
-      monthlyPrincipalInterest,
-      monthlyPropertyTaxes,
-      monthlyHomeInsurance,
-      monthlyHOA
-    ]
-  });
-  // take away all animations from the chart
-  chart.options.transitions.active.animation.duration = 0;
-  chart.update();
+	chart.data.datasets.pop();
+	chart.data.datasets.push({
+		label: label,
+		backgroundColor: color,
+		data: [
+			monthlyPrincipalInterest,
+			monthlyPropertyTaxes,
+			monthlyHomeInsurance,
+			monthlyHOA
+		]
+	});
+	// take away all animations from the chart
+	chart.options.transitions.active.animation.duration = 0;
+	chart.update();
 }
 
 calculateData()
